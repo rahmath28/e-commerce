@@ -1,11 +1,11 @@
 
-//  ithuthan ennoda data structure , initial ah frontend root la irunthu get pandrom, itha Product.jsx component la import pannai , map panni , card create panni athoda props la pas panni 
-// destructure panni display pannanum atha logic..
 
-// http://ecom.com/api/products
+// ithuvar frontend root la nama vachuruntha "product.js " file la irunthu datava get pannom 
 
-// GET, POST, DELETE, UPDATE
+// inimel backend la irukka , data folder la irukka intha "products.js " file la irunthu get panna porom..
 
+
+// ippo intha data va apipath create panni fetch panna porom..
 
 const products = [
     {

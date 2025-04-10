@@ -1,4 +1,5 @@
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
+
 // FaStar >> fully colored , FaStarHalfAlt >> half coloured , FaRegStar >> fully without colored..
 
 const Rating = ({ value, text }) => {
@@ -6,26 +7,40 @@ const Rating = ({ value, text }) => {
     return (
         // created ratings as a component because , i am going to display the ratings in 5 stars with span , 
         // each span will display each star..
+
+        // oru oru span layum conditio kuduthurukka nala , each span sshould run..
+
         <div className="flex gap-8 my-3">
             <div className='flex items-center gap-1'>
-
+                
+                {/* 1st span for first star */}
                 <span>{value >= 1 ? <FaStar /> : value >= 0.5 ? <FaStarHalfAlt /> : <FaRegStar />}</span>
 
+                {/* 2nd span for second star */}
                 <span>{value >= 2 ? <FaStar /> : value >= 1.5 ? <FaStarHalfAlt /> : <FaRegStar />}</span>
 
+                {/* 3rd span for third star */}
                 <span>{value >= 3 ? <FaStar /> : value >= 2.5 ? <FaStarHalfAlt /> : <FaRegStar />}</span>
 
+                {/* 4th span for fourth star */}
                 <span>{value >= 4 ? <FaStar /> : value >= 3.5 ? <FaStarHalfAlt /> : <FaRegStar />}</span>
 
+                {/* 5th span for fifth star */}
                 <span>{value >= 5 ? <FaStar /> : value >= 4.5 ? <FaStarHalfAlt /> : <FaRegStar />}</span>
 
             </div>
             <div>
-            <p>{`Reviews : ${text ? text : null}`}</p>
+             {/* <p>{`Reviews : ${text && text}`}</p> */}
+             {/* && : and operator enn na antha text iruntha , atha display pannum , illana null, and operator use panna null nu nama pass panna theva illa.. */}
+          
+            {/* can also write like this.. by ternary operator.. */}
+            <p>{`Reviews : ${text ? text : "No Reviews yet"}`}</p>
+
             {/* no user review review kuduthu iruntha antha user count display agum , illa na ethum display agathu..  */}
             </div>
         </div>
     )
+    // FaStar >> fully colored , FaStarHalfAlt >> half coloured , FaRegStar >> fully without colored..
 
     // final note for understanding : 
     // value : means my ratings.
