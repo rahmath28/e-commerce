@@ -17,11 +17,11 @@ const Product = () => {
   useEffect(() =>{
 
     const fetchProducts = async() => {
-      const data = await axios.get("http://localhost:5000/api/products")
+      const {data} = await axios.get("http://localhost:5000/api/products")
 
-      console.log(data) // got data : {data: Array(6), status: 200, statusText: 'OK', headers: AxiosHeaders, config: {…}, …} >> intha object la data dra oru property irukku athulathan enakku data irukku.. 
+      // console.log(data) // got data : {data: Array(6), status: 200, statusText: 'OK', headers: AxiosHeaders, config: {…}, …} >> intha object la data dra oru property irukku athulathan enakku data irukku.. 
       // kedacha data kulla , iinoru data la array of object thet is my products irukku..  so next update the data i got in my state..
-      setProducts(data.data)
+      setProducts(data)//  ippadiyum podalam :setProducts(data.data) , illa direct ah na fetch pandra edathulaiye destructure pannikkalam..
     }
     fetchProducts()
 

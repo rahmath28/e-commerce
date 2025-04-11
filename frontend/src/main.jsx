@@ -13,7 +13,7 @@ import CartScreen from "./pages/CartScreen.jsx"
 import LoginScreen from "./pages/LoginScreen.jsx"
 import PageNotFound from "./pages/PageNotFound.jsx"
 import ProductDetails from "./pages/ProductDetails.jsx"
-import products from "../product.js"; 
+// import products from "../product.js"; 
 
 
 const router = createBrowserRouter( // router dra variable la create pandrom..
@@ -28,7 +28,9 @@ const router = createBrowserRouter( // router dra variable la create pandrom..
         <Route path="/" index={true} element={<HomeScreen/>} />
         {/* intha index = true , enakku entha page initial ah render (display ) aganumo , athukku mattum index={true } pass pannanum.. */}
 
-        <Route path="/product/:id" element={<ProductDetails products={products} />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
+        {/*  after created api path commented the import statement of old data , product.js from frontend root , and removed that in productdetails props ,  */}
+        {/* because now im fetching by path.. not by that */}
         <Route path="/cart"  element={<CartScreen/>} />
         <Route path="/login"  element={<LoginScreen/>} />
         <Route path="*"  element={<PageNotFound/>} />

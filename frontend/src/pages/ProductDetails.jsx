@@ -2,25 +2,38 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import BackUpImg from "../assets/404.jpg";
 import Rating from '../components/Rating';
+import axios from "axios";
 
 // na products which mean ennoda data va props ah pass panni inga destructure panni , logic develop pannirukken 
 
 // javid bro , direct ah inga antha products which means my data va import panni , logic develop pannirukkaru..
 
 
-const ProductDetails = ({ products }) => { // by useparams hook i can get id by localhost url..
+const ProductDetails = () => { // now i dont need , to get destructure ..beacuase removed props , reason im fetching by url..
 
   const { id } = useParams(); // get id from URL
 
-  const [product, setProduct] = useState(null); // stae for to store my product i found by sideeffect hook..
+  const [product, setProduct] = useState({}); // initial ah empty object , because object  than get panna porom
 
   // hook use panni , props la pass panna product ah destructure panni , find method use pandren en na, na click panna id yum , products la irukka entha product id match agutho  ,
   // atha na vachurukka state la update pandren..
 
+  // after , crreated api path for product details page by id in server , fetching by the path i created..
+
   useEffect(() => {
-    const foundProduct = products.find((item) => item._id === id);
-    setProduct(foundProduct);
-  }, [id, products]); // based on id it render.., dependency la why products >> products props la irunthu than varuthu.., 
+    // const foundProduct = products.find((item) => item._id === id); // intha line inga theva illa because , na server la ye find panniten ennoda product ah..
+
+    const fetchProductDetails = async() => {
+
+      const {data} = await axios.get(` http://localhost:5000/api/products/${id} `) // url ennoda endpoint oda kukkanum , atha mistake panniten while practice..  : `/api/products/:${id}` (path endpoint illama kuduthuteen , without loaclhost and http)
+      // this is my endpoint url : http://localhost:5000/api/products/5 , by api created .
+      // console.log(data) // intha mari kedaikithu , ithula data nu oru , object irukku athulathan ennoda data irukku  {data: {…}, status: 200, statusText: 'OK', headers: AxiosHeaders, config: {…}, …}
+      // i am directly destructuring the data whil i fetch.., with curly braces.. ( const {data}  : itha soldrathu..)
+      setProduct(data)
+    }
+    fetchProductDetails()
+    // setProduct(foundProduct);
+  }, [id, product ]); // based on id it render.., dependency la why products >> products props la irunthu than varuthu.., 
   // intha jook based on condition onetime than run agum , re run agathu.., if sometime products kedaika time achuna, hook run agiduchuna , dtata not found nu error adikkum..
 
 
@@ -38,6 +51,8 @@ const ProductDetails = ({ products }) => { // by useparams hook i can get id by 
   }
 
   // all destructured values here are from the updated state (product), not from props., na get panna object ah state la update pannom , athula irunthuthan destructure pandrom..
+
+  // now this all destructure from the stae after fetch..
   const { name, image, description, rating, numReviews, price, countInStock } = product;
   const imagePoster = image ? image : BackUpImg;
   
