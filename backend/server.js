@@ -1,6 +1,11 @@
 import express from"express"
 import cors from "cors";
 import products from "./data/products.js"; // ithuthan ennoda backend data..
+import connectDB from "./config/db.js";
+
+//mongodb+srv://rahmath:<db_password>@ecom.jfvodxw.mongodb.net/?retryWrites=true&w=majority&appName=ecom  >> (this is my db url)
+
+// mongodb+srv://rahmath:<db_password>@ecom.jfvodxw.mongodb.net/
 
 
 // express la important ana onnum iport pannumpothu , ectension filename.js na >> extension "js uhm sethu mention pannanum " front end la extension theva illa..
@@ -13,6 +18,12 @@ import products from "./data/products.js"; // ithuthan ennoda backend data..
 
 const app = express();
 app.use(cors()) // cors ah express la ipdithan call pannanum..
+
+// app ku aprm db ah call , pannanum , import and call here..
+connectDB() // calledd here , check by node command , to see its running or not..
+// displays , mongodb is connected and server running at 5000 . , so successfully running ..
+// db la password la oru number , remove pannitu check panna , err : bad authentication displays successfully..
+// next i have to create schemas... for our projects.. ,
 
 // we have set port
 const port = 5000;
@@ -32,7 +43,7 @@ app.get("/api/products", (req, res) =>{ // intha  ("/api/products")  path  : la 
 // ippo intha path muliyama homescreen la fetch panna porom..
 
 app.get("/api/products/:id", (req,res) =>{
-    console.log(req.params.id); // got data , data console la display panna , :  http://localhost:5000/api/products/2 ( summa ennoda antha path la oru id select panni , antha url ah select panni enter thattuna , request send i will get id)
+    // console.log(req.params.id); // got data , data console la display panna , :  http://localhost:5000/api/products/2 ( summa ennoda antha path la oru id select panni , antha url ah select panni enter thattuna , request send i will get id)
     // intha id vachutha namma data va fid panni get panna porom..
     const foundProduct = products.find((item) => item._id === req.params.id); // ennoda datas la irukka id uhm , param id match anan atha find methood use panni get pandren..
     // console.log(foundProduct) // i got the full data , localhost url la ethavhu idd selct panni enter kudukkanu appothan enakku terminal la console agum..

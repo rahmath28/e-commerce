@@ -9,7 +9,7 @@
 
 const products = [
     {
-      _id: '1',
+      // removed id , mongodb will generate id while seed..
       name: 'Modern Leather Sofa',
       image: '/images/sofa.jpeg',
       description:
@@ -22,7 +22,7 @@ const products = [
       numReviews: 10,
     },
     {
-      _id: '2',
+      // removed id , mongodb will generate id while seed..
       name: 'Wooden Dining Table Set',
       image: '/images/wooden-dining.jpeg',
       description:
@@ -35,7 +35,7 @@ const products = [
       numReviews: 6,
     },
     {
-      _id: '3',
+      // removed id , mongodb will generate id while seed..
       name: 'Vintage Bookshelf',
       image: '/images/vintage-bookshelf.jpeg',
       description:
@@ -48,7 +48,7 @@ const products = [
       numReviews: 8,
     },
     {
-      _id: '4',
+      // removed id , mongodb will generate id while seed..
       name: 'Contemporary Coffee Table',
       image: '/images/coffee-table.jpeg',
       description:
@@ -61,7 +61,7 @@ const products = [
       numReviews: 15,
     },
     {
-      _id: '5',
+      // removed id , mongodb will generate id while seed..
       name: 'Comfortable Recliner Chair',
       image: '/images/recliner-chair.jpeg',
       description:
@@ -74,7 +74,7 @@ const products = [
       numReviews: 4,
     },
     {
-      _id: '6',
+      // removed id , mongodb will generate id while seed..
       name: 'Rustic Bedroom Dresser',
       image: '/images/bedroom-dresser.jpeg',
       description:
@@ -84,7 +84,7 @@ const products = [
       price: 449.99,
       countInStock: 10,
       rating: 1.77,
-      numReviews: "",
+      numReviews: 2,
     },
   ];
   
