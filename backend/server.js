@@ -18,23 +18,42 @@ import productRoutes from"./routes/productRoutes.js"
 //  so we must install CORS PACKAGE IN " BACKEND" in the server.. ( CORS NA : Etho something cross origin nu varum..)
 
 const app = express();
+
+// called the middleware her , app.use : express la use () use panni call pandrathu than middle ware..
+
+
 app.use(cors()) // cors ah express la ipdithan call pannanum..
 
 // app ku aprm db ah call , pannanum , import and call here..
 connectDB() // calledd here , check by node command , to see its running or not..
-// displays , mongodb is connected and server running at 5000 . , so successfully running ..
-// db la password la oru number , remove pannitu check panna , err : bad authentication displays successfully..
-// next i have to create schemas... for our projects.. ,
 
-// we have set port
 const port = 5000;
 
 app.get("/",(req,res) =>{
-    res.send("Hello World")
+    res.send("Home screen")
+    console.log("Home page")
 })
 
-// i removed the product fetch api paths kept here and created it in seperate folder of routes inside productRotes..
-// na antha file la na set panna path enakku run aganum na , middle ware use panni call panna pothu..
+// just for middleware next() , understanding.. 
+app.get("/users", auth, (req,res) =>{ // na ippo /sers path pona , auth function runs first and aprm than , intha userpath la iukka function run agum..
+    console.log("User")
+    res.send("users page")
+
+
+})
+
+function auth(req, res, next){
+    console.log("Auth") 
+    next() // inga than enakku next theva reson , auth first run ana oda next rrun aganum..
+   
+}
+
+// log function , to check middleware..
+function log(req, res, next) {
+    console.log("LOG");
+    next();
+} // going to call the function in the top , calling the middleware in the top is called global middleware
+
 app.use("/api/products", productRoutes)  // api path : /api/products , ithuva iruntha , productRoutes : this file will run.. , based on path , that file runs accordingly..
 
 // ethula listen pannanum nu sollanum
