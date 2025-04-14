@@ -19,11 +19,7 @@ const revieSchema = new mongoose.Schema({
         type:String,
         required:true 
     },
-    rating:{
-        type:Number,
-        required:true ,
-        default:0
-    },
+    // removed inga vachuruntha rating ... palayapadi , product schema la ye kuduthachu..
     comment:{
         type:String,
         required:true 
@@ -70,6 +66,11 @@ const productSchema =new mongoose.Schema({
         type:Number, // price type number ah get pannanum..
         required:true,
         default:0 // default na , initial ah zero va irukkum..
+    },
+    rating:{ // inserted rating in this product schema itself.., reason i have to display rating initially..
+        type:Number,
+        required:true ,
+        default:""
     },
     numReviews:{
         type:Number, // price type number ah get pannanum..
