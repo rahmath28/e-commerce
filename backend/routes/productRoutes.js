@@ -17,6 +17,7 @@ const router = express.Router()
 router.get("/", asyncHandler(async (req, res) =>{   // intha asynchandler middleware intha function ah resolve pannuthu avlotha.., err iruntha atha manage panna thani middle ware ini write pannanum..
     
     const products = await Product.find({}) // asyncHandler middleware use panna nale try catch block theva illa..
+    // throw new Error(`Broken`) // just checked for throw err
     res.json(products) // enakku kedaikra data va response ah than send pannanum..
 }))
 

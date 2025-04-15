@@ -3,6 +3,7 @@ import cors from "cors"; // cross origin , vera vera domain ah irukkuratha , acc
 // import products from "./data/products.js"; // ithuthan ennoda backend  befor addding mongodb data..
 import connectDB from "./config/db.js";
 import productRoutes from"./routes/productRoutes.js"
+import {notFound, errorHandler} from "./middleware/errorHandler.js";
 
 //mongodb+srv://rahmath:<db_password>@ecom.jfvodxw.mongodb.net/?retryWrites=true&w=majority&appName=ecom  >> (this is my db url)
 
@@ -41,6 +42,9 @@ app.get("/",(req,res) =>{
 
 // path usage unnderstood.. : /api/products >> path la common ah irunthatha vachu , product routes ah run pandrom , based on path it works , used middleware la global ah call panneerukkom , so first ah nadakkum.. en vera ethum inga ithukku mel ailla..
 app.use("/api/products", productRoutes)  // /api/products : vanthuruchu nale , productRoutes : intha file run agidum , antha fila irukka based o path ah poruthu , we will get data..
+app.use(notFound) // for not found error
+app.use(errorHandler) // for cast error , id mismatch ku..
+
 
 // ethula listen pannanum nu sollanum
 app.listen(port, () =>{
