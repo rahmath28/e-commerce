@@ -15,7 +15,7 @@ const revieSchema = new mongoose.Schema({
         required:true,
         ref:"User" // reference is from user..
     },
-    name:{
+    name:{ 
         type:String,
         required:true 
     },
@@ -29,13 +29,15 @@ const revieSchema = new mongoose.Schema({
 })
 
 const productSchema =new mongoose.Schema({
+    // priduct details ah db la insert pandrathu first i have to create a schema , then intha schema va vachuthan insert pannanum, by seeder..
+
     // ithu enakku thevayana products la irukka each property ah , yum type  oda with anything required oda create pandrom..
 
     // get panna id ah , uerdra property vachu kuduthachu , seeder athan ithu..
     user:{
         type:mongoose.Schema.Types.ObjectId, // type:mongoose.Schema.Types.ObjectId >>  ithan syntax to get admin id .
         required:true,
-        ref:"User" // reference is from user..
+        ref:"User" // reference is from User schema..
     },
     name:{
         type:String,
@@ -70,7 +72,7 @@ const productSchema =new mongoose.Schema({
     rating:{ // inserted rating in this product schema itself.., reason i have to display rating initially..
         type:Number,
         required:true ,
-        default:""
+        default:0
     },
     numReviews:{
         type:Number, // price type number ah get pannanum..

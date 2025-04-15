@@ -32,33 +32,25 @@ const importData = async () => { // this function for importing data in db
         // intha id ah vachu nam ellam product kum admin access kudukkanum..
 
         const sampleProducts = products.map((product) =>{ // ennoda product ah map panni each product ah get pandra , 
-            return {...product, user:adminUser} // spread operator , use pandren , copy  of  each product eduthu , user nu onnum add pandren athan , na find panna admin id..
+            return {...product, user:adminUser} //that function return each products as a object , by  spread operator , use pandren , copy  of  each product eduthu , user nu onnum add pandren athan , na find panna admin id ah athula pass panni ..
             // now the admin id is passed to all products , so he can access everything now..
         }) // so next ennoda products ah Product schema vachu insert pannanum into the db
 
-        // each products la yum user id get pannanum na , (  type:mongoose.Schema.Types.ObjectId, ) >> intha syntax than use pannanum..
-        await Product.insertMany(sampleProducts);
+        // each products la yum user id get pannanum na , (  type:mongoose.Schema.Types.ObjectId, ) >> intha syntax than use pannanum.., ids pass panna varibale ah pass panniyachu
+        await Product.insertMany(sampleProducts); // i provided admic id , to access all products..
 
 
         console.log("Data Imported")
-        process.exit() // exist the process..
+        process.exit() //ithu ellam nadanthu mudunjuruchuna , exist the process..
     } catch(err){
         console.log(err.message)
-        process.exit(1) // remeber this line is must , to kill 
+        process.exit(1) // remeber this line is must , err na , antha process apdiye  to kill 
     }
 }
 
-// console.log(process) // i will get the entire process
-// console.log(process.argv) // i got this [ 'C:\\Program Files\\nodejs\\node.exe', 'E:\\MERN\\e-com\\backend\\seeder'] , itha base pannithan condition
-
-// ippo : intha command run panna , i get :  [ 'C:\\Program Files\\nodejs\\node.exe', 'E:\\MERN\\e-com\\backend\\seeder', -d]  ithula ennoda -d add aguthu , itha argument nu sollvom , -d mari pass pandrathu..
-
-// *** -d na , destroy pandrathu.. *** , // itha base panni condition
-
-
 const destroyData = async () =>{
     try{
-        // destroy data layum , same than ..
+        // destroy data layum , same than .., existing ah irukka ellathaiyum delete pannanum..
         await User.deleteMany() 
         await Product.deleteMany()
 
@@ -71,9 +63,19 @@ const destroyData = async () =>{
 
     }
 }
+
+// console.log(process) // i will get the entire process in terminal.. , argv na argument
+// console.log(process.argv) // i got this [ 'C:\\Program Files\\nodejs\\node.exe', 'E:\\MERN\\e-com\\backend\\seeder'] , itha base pannithan condition ,  na type pandra ellame ithula display agum , which means intha array  la add agum..
+
+// ippo : intha command run panna , i get :  [ 'C:\\Program Files\\nodejs\\node.exe', 'E:\\MERN\\e-com\\backend\\seeder', -d]  ithula ennoda -d add aguthu , itha argument nu sollvom , -d mari pass pandrathu..
+
+// *** -d na , destroy pandrathu.. *** , // itha base panni condition
+
+
+
  // final condition based on the argument..
  if(process.argv[2] ==="-d"){ // process la destroy panna -d argument pass panna , destroy data function run agum.. , -d kudutha argument 2 la athu add agum..
-    destroyData()
+    destroyData() // na argument la command pass pannumpothu -d , nu iruntha intha arry la 2nd index la add agum , so condition is based on that..
  }else{
     importData() // ethum pass pannala na import data..
  } 

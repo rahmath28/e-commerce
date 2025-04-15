@@ -17,4 +17,4 @@ const connectDB  = async () =>{
 }
 
 // finally export , to use our db..
-export default connectDB; // created db , next server la caal pannanum ,so import and call the db...
+export default connectDB; // created db , next server la caal pannanum ,so import and call the db... appothan enaku data kedaikum..

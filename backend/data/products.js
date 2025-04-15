@@ -2,7 +2,7 @@
 
 // ithuvar frontend root la nama vachuruntha "product.js " file la irunthu datava get pannom 
 
-// inimel backend la irukka , data folder la irukka intha "products.js " file la irunthu get panna porom..
+// inimel backend la irukka , data folder la irukka intha "products.js " file la irunthu get panna porom.. ithu ennoda mock data..
 
 
 // ippo intha data va apipath create panni fetch panna porom..
