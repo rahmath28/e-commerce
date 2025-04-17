@@ -1,0 +1,6 @@
+
+previous fetched data using axios , and used state 
+
+After , installing redux tool kit and react redux , going to fetch data by redux..
+
+1 . configure store setup.

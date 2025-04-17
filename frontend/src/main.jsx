@@ -13,7 +13,8 @@ import CartScreen from "./pages/CartScreen.jsx"
 import LoginScreen from "./pages/LoginScreen.jsx"
 import PageNotFound from "./pages/PageNotFound.jsx"
 import ProductDetails from "./pages/ProductDetails.jsx"
-// import products from "../product.js"; 
+import { store } from './store.js';
+import { Provider } from 'react-redux'
 
 
 const router = createBrowserRouter( // router dra variable la create pandrom..
@@ -40,11 +41,13 @@ const router = createBrowserRouter( // router dra variable la create pandrom..
   
 
 createRoot(document.getElementById('root')).render(
-  
-    <RouterProvider router={router}>
-         <App/>
 
+  <Provider store = {store}>
+        <RouterProvider router={router}>
+         <App/>
      </RouterProvider>
+  </Provider>
+    
 
    
 
